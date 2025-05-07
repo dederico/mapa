@@ -1,7 +1,13 @@
+import os
 import pandas as pd
+from dotenv import load_dotenv
 from geopy.geocoders import GoogleV3
 from geopy.extra.rate_limiter import RateLimiter
 import folium
+
+# Cargar variables del archivo .env
+load_dotenv()
+api_key = os.getenv("GOOGLE_MAPS_API_KEY")
 
 # Cargar archivo Excel
 df = pd.read_excel("Recorrido ubicación casillas San Pedro.xlsx")
@@ -10,7 +16,6 @@ df = pd.read_excel("Recorrido ubicación casillas San Pedro.xlsx")
 df["DireccionCompleta"] = df["Domicilio"].astype(str) + ", San Pedro Garza García, Nuevo León, México"
 
 # Configura tu API KEY (mejor usar variable de entorno en producción)
-api_key = "AIzaSyDQeA8Ay6UfjVXJV1wV-z_cl35iyleXu2c"
 geolocator = GoogleV3(api_key=api_key, timeout=10)
 geocode = RateLimiter(geolocator.geocode, min_delay_seconds=1)
 

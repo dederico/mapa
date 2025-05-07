@@ -10,7 +10,7 @@ load_dotenv()
 api_key = os.getenv("GOOGLE_MAPS_API_KEY")
 
 # Cargar archivo Excel
-df = pd.read_excel("Recorrido ubicación casillas San Pedro.xlsx")
+df = pd.read_excel("recorrido_casillas_san_pedro.xlsx")
 
 # Crear columna de dirección completa
 df["DireccionCompleta"] = df["Domicilio"].astype(str) + ", San Pedro Garza García, Nuevo León, México"

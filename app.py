@@ -1,3 +1,4 @@
+import os
 from flask import Flask, send_file
 
 app = Flask(__name__)
@@ -7,4 +8,5 @@ def mapa():
     return send_file("mapa_casillas_san_pedro.html")
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5000)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)

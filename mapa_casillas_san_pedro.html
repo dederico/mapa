@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_335992f1c0e62cfdc5ac535fef3d8060 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_335992f1c0e62cfdc5ac535fef3d8060" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_335992f1c0e62cfdc5ac535fef3d8060 = L.map(
+                "map_335992f1c0e62cfdc5ac535fef3d8060",
+                {
+                    center: [25.6579, -100.4026],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 13,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_c1d9f5e738887e6610eccc180c30d373 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_c1d9f5e738887e6610eccc180c30d373.addTo(map_335992f1c0e62cfdc5ac535fef3d8060);
+        
+    
+            var marker_db12d8b60bb59ea4f0cf85c32b842a4e = L.marker(
+                [25.6423309, -100.3153031],
+                {}
+            ).addTo(map_335992f1c0e62cfdc5ac535fef3d8060);
+        
+    
+        var popup_d05748aa4e02fdeca4db7a6974c5c740 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_03391084cb46514ab678db2a516da234 = $(`<div id="html_03391084cb46514ab678db2a516da234" style="width: 100.0%; height: 100.0%;">CENTRO MOVER ORIENTE<br>CALLE PASEO BLANCA CELIA, NÚMERO 1000, COLONIA AMPLIACIÓN VALLE DEL MIRADOR, SAN PEDRO GARZA GARCÍA, CÓDIGO POSTAL 66260, SAN PEDRO GARZA GARCÍA, NUEVO LEÓN. <br>ENTRE PASEO DE LA ESPERANZA Y PASEO SANDRA</div>`)[0];
+                popup_d05748aa4e02fdeca4db7a6974c5c740.setContent(html_03391084cb46514ab678db2a516da234);
+            
+        
+
+        marker_db12d8b60bb59ea4f0cf85c32b842a4e.bindPopup(popup_d05748aa4e02fdeca4db7a6974c5c740)
+        ;
+
+        
+    
+    
+            marker_db12d8b60bb59ea4f0cf85c32b842a4e.bindTooltip(
+                `<div>
+                     CENTRO MOVER ORIENTE
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a374455f7721dc1492d14e67ca7dcae1 = L.marker(
+                [25.6511608, -100.3429007],
+                {}
+            ).addTo(map_335992f1c0e62cfdc5ac535fef3d8060);
+        
+    
+        var popup_3dc35a7e67a5d1781f48582c756cb46c = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_a6ed1281762dfeeaae93dffcca1060da = $(`<div id="html_a6ed1281762dfeeaae93dffcca1060da" style="width: 100.0%; height: 100.0%;">PARQUE MARIPOSA <br>CALLE MONTES HIMALAYA, SIN NÚMERO, RESIDENCIAL SAN AGUSTÍN, SAN PEDRO GARZA GARCÍA, CÓDIGO POSTAL 66260, SAN PEDRO GARZA GARCÍA, NUEVO LEÓN. <br>ENTRE SIERRA NEVADA Y SIERRA VERTIENTES </div>`)[0];
+                popup_3dc35a7e67a5d1781f48582c756cb46c.setContent(html_a6ed1281762dfeeaae93dffcca1060da);
+            
+        
+
+        marker_a374455f7721dc1492d14e67ca7dcae1.bindPopup(popup_3dc35a7e67a5d1781f48582c756cb46c)
+        ;
+
+        
+    
+    
+            marker_a374455f7721dc1492d14e67ca7dcae1.bindTooltip(
+                `<div>
+                     PARQUE MARIPOSA 
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c5e9190fafd7a794abf3a21efc42e985 = L.marker(
+                [25.6571811, -100.3467522],
+                {}
+            ).addTo(map_335992f1c0e62cfdc5ac535fef3d8060);
+        
+    
+        var popup_d1f1c1dff9ebdb5bd47fa7731ad1b7fb = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d8f91b996ee3ba14ea0f3b269c3dc4b7 = $(`<div id="html_d8f91b996ee3ba14ea0f3b269c3dc4b7" style="width: 100.0%; height: 100.0%;">PARQUE MARIANO ESCOBEDO <br>CALLE RÍO NAZAS, SIN NÚMERO, COLONIA VALLE ORIENTE, SAN PEDRO GARZA GARCÍA, CÓDIGO POSTAL 66220, SAN PEDRO GARZA GARCÍA, NUEVO LEÓN. <br>CRUZ CON RÍO SAN MARCOS</div>`)[0];
+                popup_d1f1c1dff9ebdb5bd47fa7731ad1b7fb.setContent(html_d8f91b996ee3ba14ea0f3b269c3dc4b7);
+            
+        
+
+        marker_c5e9190fafd7a794abf3a21efc42e985.bindPopup(popup_d1f1c1dff9ebdb5bd47fa7731ad1b7fb)
+        ;
+
+        
+    
+    
+            marker_c5e9190fafd7a794abf3a21efc42e985.bindTooltip(
+                `<div>
+                     PARQUE MARIANO ESCOBEDO 
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_65d58bfcf9ab505bace634e0bd34aa62 = L.marker(
+                [25.6598565, -100.3489072],
+                {}
+            ).addTo(map_335992f1c0e62cfdc5ac535fef3d8060);
+        
+    
+        var popup_13e44946e45dc046f82eecbdf9edaefa = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_755e0baae5137b1ebdfdca950c12c683 = $(`<div id="html_755e0baae5137b1ebdfdca950c12c683" style="width: 100.0%; height: 100.0%;">PARQUE PÚBLICO<br>CALLE RÍO PANTEPEC, SIN NÚMERO, COLONIA VALLE DE SANTA ENGRACIA, SAN PEDRO GARZA GARCÍA, CÓDIGO POSTAL 66260, SAN PEDRO GARZA GARCÍA, NUEVO LEÓN. <br>ENTRE AVENIDA RICARDO MARGÁIN Y LOS ROSALES</div>`)[0];
+                popup_13e44946e45dc046f82eecbdf9edaefa.setContent(html_755e0baae5137b1ebdfdca950c12c683);
+            
+        
+
+        marker_65d58bfcf9ab505bace634e0bd34aa62.bindPopup(popup_13e44946e45dc046f82eecbdf9edaefa)
+        ;
+
+        
+    
+    
+            marker_65d58bfcf9ab505bace634e0bd34aa62.bindTooltip(
+                `<div>
+                     PARQUE PÚBLICO
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_eda4a59c45a623e6eb3847e64bb7381e = L.marker(
+                [25.6631747, -100.3620346],
+                {}
+            ).addTo(map_335992f1c0e62cfdc5ac535fef3d8060);
+        
+    
+        var popup_cc184c618a37aca3d18e9737197c8fee = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_c9cc926c23f698129e7b27f8bdcde4d3 = $(`<div id="html_c9cc926c23f698129e7b27f8bdcde4d3" style="width: 100.0%; height: 100.0%;">PARQUE MUNICIPAL EL CAPITÁN <br>CALLE VÍA CORSO PONIENTE, SIN NÚMERO, COLONIA FUENTES DEL VALLE, SAN PEDRO GARZA GARCÍA, CÓDIGO POSTAL 66220, SAN PEDRO GARZA GARCÍA, NUEVO LEÓN. <br>ENTRE VÍA SAVOTINO Y AVENIDA FUENTES DEL VALLE</div>`)[0];
+                popup_cc184c618a37aca3d18e9737197c8fee.setContent(html_c9cc926c23f698129e7b27f8bdcde4d3);
+            
+        
+
+        marker_eda4a59c45a623e6eb3847e64bb7381e.bindPopup(popup_cc184c618a37aca3d18e9737197c8fee)
+        ;
+
+        
+    
+    
+            marker_eda4a59c45a623e6eb3847e64bb7381e.bindTooltip(
+                `<div>
+                     PARQUE MUNICIPAL EL CAPITÁN 
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d140ccb58c37542bf243dcbed3548f2f = L.marker(
+                [25.6571888, -100.362576],
+                {}
+            ).addTo(map_335992f1c0e62cfdc5ac535fef3d8060);
+        
+    
+        var popup_87650de934c927dc74446fc0c476dbd5 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_334a921076339d5c2d42fe57e802d5be = $(`<div id="html_334a921076339d5c2d42fe57e802d5be" style="width: 100.0%; height: 100.0%;">PARQUE MISSISSIPPI<br>CALLE RÍO MOCTEZUMA, SIN NÚMERO, COLONIA DEL VALLE, SAN PEDRO GARZA GARCÍA, CÓDIGO POSTAL 66220, SAN PEDRO GARZA GARCÍA, NUEVO LEÓN. <br>ENTRE RÍO MISSISSIPPI Y RÍO DE LA PLATA</div>`)[0];
+                popup_87650de934c927dc74446fc0c476dbd5.setContent(html_334a921076339d5c2d42fe57e802d5be);
+            
+        
+
+        marker_d140ccb58c37542bf243dcbed3548f2f.bindPopup(popup_87650de934c927dc74446fc0c476dbd5)
+        ;
+
+        
+    
+    
+            marker_d140ccb58c37542bf243dcbed3548f2f.bindTooltip(
+                `<div>
+                     PARQUE MISSISSIPPI
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3c6426e8139780aa77dd881e58c31348 = L.marker(
+                [25.6339599, -100.3617911],
+                {}
+            ).addTo(map_335992f1c0e62cfdc5ac535fef3d8060);
+        
+    
+        var popup_586d9f5731a98c7bda7bc446ff295c35 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_2b1e824b493e657ee0b9dd0c926f0fc3 = $(`<div id="html_2b1e824b493e657ee0b9dd0c926f0fc3" style="width: 100.0%; height: 100.0%;">PARQUE MUNICIPAL<br>CALLE SÓCRATES, SIN NÚMERO, RESIDENCIAL CHIPINQUE TERCER SECTOR, SAN PEDRO GARZA GARCÍA, CÓDIGO POSTAL 66297, SAN PEDRO GARZA GARCÍA, NUEVO LEÓN. <br>ENTRE LA RIVERA Y PRIVADA MONT MATRE</div>`)[0];
+                popup_586d9f5731a98c7bda7bc446ff295c35.setContent(html_2b1e824b493e657ee0b9dd0c926f0fc3);
+            
+        
+
+        marker_3c6426e8139780aa77dd881e58c31348.bindPopup(popup_586d9f5731a98c7bda7bc446ff295c35)
+        ;
+
+        
+    
+    
+            marker_3c6426e8139780aa77dd881e58c31348.bindTooltip(
+                `<div>
+                     PARQUE MUNICIPAL
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a5c215b1ddcfac8700fca5083345aa2a = L.marker(
+                [25.649909, -100.3763118],
+                {}
+            ).addTo(map_335992f1c0e62cfdc5ac535fef3d8060);
+        
+    
+        var popup_09b17ba85d543a90d9db9dd478d0ad6c = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_5b326245ca997c9a1e08fb72bf820771 = $(`<div id="html_5b326245ca997c9a1e08fb72bf820771" style="width: 100.0%; height: 100.0%;">PARQUE LOS OLIVOS<br>CALLE JERÓNIMO SILLER, SIN NÚMERO, COLONIA JERÓNIMO SILLER, SAN PEDRO GARZA GARCÍA, CÓDIGO POSTAL 66250, SAN PEDRO GARZA GARCÍA, NUEVO LEÓN. <br>ENTRE NÁPOLES Y CERRO PRIETO</div>`)[0];
+                popup_09b17ba85d543a90d9db9dd478d0ad6c.setContent(html_5b326245ca997c9a1e08fb72bf820771);
+            
+        
+
+        marker_a5c215b1ddcfac8700fca5083345aa2a.bindPopup(popup_09b17ba85d543a90d9db9dd478d0ad6c)
+        ;
+
+        
+    
+    
+            marker_a5c215b1ddcfac8700fca5083345aa2a.bindTooltip(
+                `<div>
+                     PARQUE LOS OLIVOS
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_82b652321b3bbb9ff6da06fa94bf39d4 = L.marker(
+                [25.649909, -100.3763118],
+                {}
+            ).addTo(map_335992f1c0e62cfdc5ac535fef3d8060);
+        
+    
+        var popup_06e6b1cfb8d3fa8f5d4c2e7af2697dea = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_e320bc54f44e6412c469e2b1a1507658 = $(`<div id="html_e320bc54f44e6412c469e2b1a1507658" style="width: 100.0%; height: 100.0%;">OFICINAS CENTRALES DE SAN PEDRO PARQUES<br>AVENIDA ALFONSO REYES, SIN NÚMERO, COLONIA BOSQUES DEL VALLE PRIMER SECTOR, SAN PEDRO GARZA GARCÍA, CÓDIGO POSTAL 66250, SAN PEDRO GARZA GARCÍA, NUEVO LEÓN. <br>ENTRE SIERRA LINDA Y BOSQUES DE VIENA</div>`)[0];
+                popup_06e6b1cfb8d3fa8f5d4c2e7af2697dea.setContent(html_e320bc54f44e6412c469e2b1a1507658);
+            
+        
+
+        marker_82b652321b3bbb9ff6da06fa94bf39d4.bindPopup(popup_06e6b1cfb8d3fa8f5d4c2e7af2697dea)
+        ;
+
+        
+    
+    
+            marker_82b652321b3bbb9ff6da06fa94bf39d4.bindTooltip(
+                `<div>
+                     OFICINAS CENTRALES DE SAN PEDRO PARQUES
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f31909efe341f67a263ac1d2e6f907b5 = L.marker(
+                [25.6462111, -100.3769912],
+                {}
+            ).addTo(map_335992f1c0e62cfdc5ac535fef3d8060);
+        
+    
+        var popup_6adfc49d366e725af738582ef936d711 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_cb284683fb0fccd3a35ea314d27ff77f = $(`<div id="html_cb284683fb0fccd3a35ea314d27ff77f" style="width: 100.0%; height: 100.0%;">PARQUE PÚBLICO<br>CALLE BOSQUES DEL OLIVO, SIN NÚMERO, COLONIA BOSQUES DEL VALLE SEGUNDO SECTOR, SAN PEDRO GARZA GARCÍA, CÓDIGO POSTAL 66220, SAN PEDRO GARZA GARCÍA, NUEVO LEÓN. <br>ENTRE BOSQUES DEL VALLE Y BOSQUES DE TOLUCA</div>`)[0];
+                popup_6adfc49d366e725af738582ef936d711.setContent(html_cb284683fb0fccd3a35ea314d27ff77f);
+            
+        
+
+        marker_f31909efe341f67a263ac1d2e6f907b5.bindPopup(popup_6adfc49d366e725af738582ef936d711)
+        ;
+
+        
+    
+    
+            marker_f31909efe341f67a263ac1d2e6f907b5.bindTooltip(
+                `<div>
+                     PARQUE PÚBLICO
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a9a0bb296fd96b2e7518e60949f0430c = L.marker(
+                [25.6473541, -100.382875],
+                {}
+            ).addTo(map_335992f1c0e62cfdc5ac535fef3d8060);
+        
+    
+        var popup_d741074b5783734aeb495c82ebe6f483 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_8dc6439519223dfd077f7b2bd258c8f5 = $(`<div id="html_8dc6439519223dfd077f7b2bd258c8f5" style="width: 100.0%; height: 100.0%;">CANCHA DE FÚTBOL Y BÁSQUETBOL<br>PRIVADA HERRADURA, SIN NÚMERO, COLONIA LOMAS DEL VALLE, SAN PEDRO GARZA GARCÍA, CÓDIGO POSTAL 66256, SAN PEDRO GARZA GARCÍA, NUEVO LEÓN. <br>ENTRE AVENIDA ALFONSO REYES Y LAREDO</div>`)[0];
+                popup_d741074b5783734aeb495c82ebe6f483.setContent(html_8dc6439519223dfd077f7b2bd258c8f5);
+            
+        
+
+        marker_a9a0bb296fd96b2e7518e60949f0430c.bindPopup(popup_d741074b5783734aeb495c82ebe6f483)
+        ;
+
+        
+    
+    
+            marker_a9a0bb296fd96b2e7518e60949f0430c.bindTooltip(
+                `<div>
+                     CANCHA DE FÚTBOL Y BÁSQUETBOL
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f903a61432a5b036d70b377bb0a9dadf = L.marker(
+                [25.64448, -100.3864625],
+                {}
+            ).addTo(map_335992f1c0e62cfdc5ac535fef3d8060);
+        
+    
+        var popup_8158097a2449a63161681ce9cca7668f = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_f5bb3ab7e23b37f6deb66a1d10178dc0 = $(`<div id="html_f5bb3ab7e23b37f6deb66a1d10178dc0" style="width: 100.0%; height: 100.0%;">CENTRO CULTURAL DEPORTIVO TAMPIQUITO<br>CALLE AMATISTA, SIN NÚMERO, COLONIA LOMAS DE TAMPIQUITO, SAN PEDRO GARZA GARCÍA, CÓDIGO POSTAL 66240, SAN PEDRO GARZA GARCÍA, NUEVO LEÓN. <br>CRUZ CON ÓNIX ANTES PLUTARCO ELÍAS CALLES</div>`)[0];
+                popup_8158097a2449a63161681ce9cca7668f.setContent(html_f5bb3ab7e23b37f6deb66a1d10178dc0);
+            
+        
+
+        marker_f903a61432a5b036d70b377bb0a9dadf.bindPopup(popup_8158097a2449a63161681ce9cca7668f)
+        ;
+
+        
+    
+    
+            marker_f903a61432a5b036d70b377bb0a9dadf.bindTooltip(
+                `<div>
+                     CENTRO CULTURAL DEPORTIVO TAMPIQUITO
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_cd68470c828e96db5bf84c28f2b05d09 = L.marker(
+                [25.6676386, -100.3744171],
+                {}
+            ).addTo(map_335992f1c0e62cfdc5ac535fef3d8060);
+        
+    
+        var popup_04dca940dc44182a982d28bf36071fa7 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_1ae8885d3e19dcf4fae2118afa65bd15 = $(`<div id="html_1ae8885d3e19dcf4fae2118afa65bd15" style="width: 100.0%; height: 100.0%;">OFICINA DE SERVICIOS CIUDADANOS<br>AVENIDA IGNACIO MORONES PRIETO, NÚMERO 2090, COLONIA DEL VALLE, SAN PEDRO GARZA GARCÍA, CÓDIGO POSTAL 66220, SAN PEDRO GARZA GARCÍA, NUEVO LEÓN. <br>ENTRE AVENIDA HUMBERTO LOBO Y MANUEL SANTOS</div>`)[0];
+                popup_04dca940dc44182a982d28bf36071fa7.setContent(html_1ae8885d3e19dcf4fae2118afa65bd15);
+            
+        
+
+        marker_cd68470c828e96db5bf84c28f2b05d09.bindPopup(popup_04dca940dc44182a982d28bf36071fa7)
+        ;
+
+        
+    
+    
+            marker_cd68470c828e96db5bf84c28f2b05d09.bindTooltip(
+                `<div>
+                     OFICINA DE SERVICIOS CIUDADANOS
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_64d45c7fc30909b24a2e78d46b01be98 = L.marker(
+                [25.6579196, -100.395423],
+                {}
+            ).addTo(map_335992f1c0e62cfdc5ac535fef3d8060);
+        
+    
+        var popup_f3f6b11341b57afa7303c63ef0a8e566 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_9a5c4838dd8a166bf1247546069c53bf = $(`<div id="html_9a5c4838dd8a166bf1247546069c53bf" style="width: 100.0%; height: 100.0%;">CANCHA DE BÁSQUETBOL<br>CALLE HERMENEGILDO GALEANA, SIN NÚMERO, COLONIA PALO BLANCO, SAN PEDRO GARZA GARCÍA, CÓDIGO POSTAL 66236, SAN PEDRO GARZA GARCÍA, NUEVO LEÓN. <br>ENTRE MANUEL DOBLADO Y SANTOS DEGOLLADO</div>`)[0];
+                popup_f3f6b11341b57afa7303c63ef0a8e566.setContent(html_9a5c4838dd8a166bf1247546069c53bf);
+            
+        
+
+        marker_64d45c7fc30909b24a2e78d46b01be98.bindPopup(popup_f3f6b11341b57afa7303c63ef0a8e566)
+        ;
+
+        
+    
+    
+            marker_64d45c7fc30909b24a2e78d46b01be98.bindTooltip(
+                `<div>
+                     CANCHA DE BÁSQUETBOL
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6cce20922b6b4c1835c62dbdbe529444 = L.marker(
+                [25.649568, -100.4002717],
+                {}
+            ).addTo(map_335992f1c0e62cfdc5ac535fef3d8060);
+        
+    
+        var popup_82a0db5c08da1761e4000616dd4677e8 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_da37f13a70b4c082588cc1baf76345a6 = $(`<div id="html_da37f13a70b4c082588cc1baf76345a6" style="width: 100.0%; height: 100.0%;">PLAZA PÚBLICA<br>CALLE SAN FELIPE DE JESÚS, SIN NÚMERO, COLONIA LA CIMA, SAN PEDRO GARZA GARCÍA, CÓDIGO POSTAL 66230, SAN PEDRO GARZA GARCÍA, NUEVO LEÓN.<br>ENTRE CÓRDOBA Y GRANADA </div>`)[0];
+                popup_82a0db5c08da1761e4000616dd4677e8.setContent(html_da37f13a70b4c082588cc1baf76345a6);
+            
+        
+
+        marker_6cce20922b6b4c1835c62dbdbe529444.bindPopup(popup_82a0db5c08da1761e4000616dd4677e8)
+        ;
+
+        
+    
+    
+            marker_6cce20922b6b4c1835c62dbdbe529444.bindTooltip(
+                `<div>
+                     PLAZA PÚBLICA
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7b7baa4001c95c4b1d1f7688625661a6 = L.marker(
+                [25.655152, -100.4084756],
+                {}
+            ).addTo(map_335992f1c0e62cfdc5ac535fef3d8060);
+        
+    
+        var popup_1c194abdc7e88b644bdb735b7c1b0ba0 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_300548d38e3cda5c020aad24913821a1 = $(`<div id="html_300548d38e3cda5c020aad24913821a1" style="width: 100.0%; height: 100.0%;">PARQUE MUNICIPAL<br>CALLE IGNACIO ALTAMIRANO, SIN NÚMERO, COLONIA PRADOS DE LA SIERRA, SAN PEDRO GARZA GARCÍA, CÓDIGO POSTAL 66230, SAN PEDRO GARZA GARCÍA, NUEVO LEÓN.<br>ESQUINA CON CALLE MATANCILLAS</div>`)[0];
+                popup_1c194abdc7e88b644bdb735b7c1b0ba0.setContent(html_300548d38e3cda5c020aad24913821a1);
+            
+        
+
+        marker_7b7baa4001c95c4b1d1f7688625661a6.bindPopup(popup_1c194abdc7e88b644bdb735b7c1b0ba0)
+        ;
+
+        
+    
+    
+            marker_7b7baa4001c95c4b1d1f7688625661a6.bindTooltip(
+                `<div>
+                     PARQUE MUNICIPAL
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5890f74d3cdd63dd0fb49bec326a6bb3 = L.marker(
+                [25.6644663, -100.4134702],
+                {}
+            ).addTo(map_335992f1c0e62cfdc5ac535fef3d8060);
+        
+    
+        var popup_c65b16ec6a1ec363e897707e776963f2 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_204a05c574c1040cbe8e2f71a4859473 = $(`<div id="html_204a05c574c1040cbe8e2f71a4859473" style="width: 100.0%; height: 100.0%;">CENTRO DE DESARROLLO INTEGRAL SAN PEDRO<br>AVENIDA LÁZARO GARZA AYALA, NÚMERO 1001 PONIENTE, COLONIA LÁZARO GARZA AYALA, SAN PEDRO GARZA GARCÍA, CÓDIGO POSTAL 66238, SAN PEDRO GARZA GARCÍA, NUEVO LEÓN. <br>ENTRE DIEGO SALDÍVAR Y PRIVADA DE LOS ACUERDOS </div>`)[0];
+                popup_c65b16ec6a1ec363e897707e776963f2.setContent(html_204a05c574c1040cbe8e2f71a4859473);
+            
+        
+
+        marker_5890f74d3cdd63dd0fb49bec326a6bb3.bindPopup(popup_c65b16ec6a1ec363e897707e776963f2)
+        ;
+
+        
+    
+    
+            marker_5890f74d3cdd63dd0fb49bec326a6bb3.bindTooltip(
+                `<div>
+                     CENTRO DE DESARROLLO INTEGRAL SAN PEDRO
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_60ae3407aea421ce857c44ec2754fee2 = L.marker(
+                [25.6684287, -100.4029928],
+                {}
+            ).addTo(map_335992f1c0e62cfdc5ac535fef3d8060);
+        
+    
+        var popup_b3bc06ba2fb5d2f31bacc8772d8da74e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_eabbc4bbd834518a832f64925bf961b2 = $(`<div id="html_eabbc4bbd834518a832f64925bf961b2" style="width: 100.0%; height: 100.0%;">PARQUE MUNICIPAL<br>CALLE CORREGIDORA, SIN NÚMERO, COLONIA RINCÓN COLONIAL, SAN PEDRO GARZA GARCÍA, CÓDIGO POSTAL 66230, SAN PEDRO GARZA GARCÍA, NUEVO LEÓN. <br>ENTRE NIÑOS HÉROES E INDEPENDENCIA</div>`)[0];
+                popup_b3bc06ba2fb5d2f31bacc8772d8da74e.setContent(html_eabbc4bbd834518a832f64925bf961b2);
+            
+        
+
+        marker_60ae3407aea421ce857c44ec2754fee2.bindPopup(popup_b3bc06ba2fb5d2f31bacc8772d8da74e)
+        ;
+
+        
+    
+    
+            marker_60ae3407aea421ce857c44ec2754fee2.bindTooltip(
+                `<div>
+                     PARQUE MUNICIPAL
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_227d8bb60314336f431b1a32c574a151 = L.marker(
+                [25.6725882, -100.4024954],
+                {}
+            ).addTo(map_335992f1c0e62cfdc5ac535fef3d8060);
+        
+    
+        var popup_168ed04be69228bcb465eb50c694228a = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_70e0580a1de55525cb6c8016d1e168cc = $(`<div id="html_70e0580a1de55525cb6c8016d1e168cc" style="width: 100.0%; height: 100.0%;">SALÓN POLIVALENTE LUCIO BLANCO 2<br>CALLE PLAN DEL RÍO, NÚMERO 261, COLONIA LUCIO BLANCO, SAN PEDRO GARZA GARCÍA, CÓDIGO POSTAL 66218, SAN PEDRO GARZA GARCÍA, NUEVO LEÓN.<br>CRUZ CON AVENIDA CORREGIDORA</div>`)[0];
+                popup_168ed04be69228bcb465eb50c694228a.setContent(html_70e0580a1de55525cb6c8016d1e168cc);
+            
+        
+
+        marker_227d8bb60314336f431b1a32c574a151.bindPopup(popup_168ed04be69228bcb465eb50c694228a)
+        ;
+
+        
+    
+    
+            marker_227d8bb60314336f431b1a32c574a151.bindTooltip(
+                `<div>
+                     SALÓN POLIVALENTE LUCIO BLANCO 2
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1cdb2f1268f33da9694be5739e6cd1a7 = L.marker(
+                [25.6808344, -100.407343],
+                {}
+            ).addTo(map_335992f1c0e62cfdc5ac535fef3d8060);
+        
+    
+        var popup_ac4305a00765e44b34bae8f6cefde1f3 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_da67e2f0f2338379f826b32e0f1561bc = $(`<div id="html_da67e2f0f2338379f826b32e0f1561bc" style="width: 100.0%; height: 100.0%;">PARQUE LA RETAMA VISTA MONTAÑA, EXPLANADA DEL PARQUE<br>CALLE JOSÉ VIVANCO NORTE, SIN NÚMERO, COLONIA VISTA MONTAÑA, SAN PEDRO GARZA GARCÍA, CÓDIGO POSTAL 66216, SAN PEDRO GARZA GARCÍA, NUEVO LEÓN.<br>ENTRE ADOLFO DE LA HUERTA Y AVENIDA EMILIANO ZAPATA</div>`)[0];
+                popup_ac4305a00765e44b34bae8f6cefde1f3.setContent(html_da67e2f0f2338379f826b32e0f1561bc);
+            
+        
+
+        marker_1cdb2f1268f33da9694be5739e6cd1a7.bindPopup(popup_ac4305a00765e44b34bae8f6cefde1f3)
+        ;
+
+        
+    
+    
+            marker_1cdb2f1268f33da9694be5739e6cd1a7.bindTooltip(
+                `<div>
+                     PARQUE LA RETAMA VISTA MONTAÑA, EXPLANADA DEL PARQUE
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7b1f799e5a8266ff88eaa6646905b7a1 = L.marker(
+                [25.6843128, -100.4057388],
+                {}
+            ).addTo(map_335992f1c0e62cfdc5ac535fef3d8060);
+        
+    
+        var popup_92c5e78e5c1e1c91342e7b5b9b02d714 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_a59503585cefb87f053eeafc5e8e2093 = $(`<div id="html_a59503585cefb87f053eeafc5e8e2093" style="width: 100.0%; height: 100.0%;">CENTRO DE CULTURA VISTA MONTAÑA<br>CALLE NICÉFORO ZAMBRANO, SIN NÚMERO, COLONIA VISTA MONTAÑA, SAN PEDRO GARZA GARCÍA, CÓDIGO POSTAL 66216, SAN PEDRO GARZA GARCÍA, NUEVO LEÓN.<br>CRUZ CON CALLE SIN NOMBRE</div>`)[0];
+                popup_92c5e78e5c1e1c91342e7b5b9b02d714.setContent(html_a59503585cefb87f053eeafc5e8e2093);
+            
+        
+
+        marker_7b1f799e5a8266ff88eaa6646905b7a1.bindPopup(popup_92c5e78e5c1e1c91342e7b5b9b02d714)
+        ;
+
+        
+    
+    
+            marker_7b1f799e5a8266ff88eaa6646905b7a1.bindTooltip(
+                `<div>
+                     CENTRO DE CULTURA VISTA MONTAÑA
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9e42358e436e8486dbaca7f99b85322e = L.marker(
+                [25.6814268, -100.4089842],
+                {}
+            ).addTo(map_335992f1c0e62cfdc5ac535fef3d8060);
+        
+    
+        var popup_fbae9384768e9c2e74a7980bc741e617 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_0a38461cd0f2fdeb30806e5ba96f2f94 = $(`<div id="html_0a38461cd0f2fdeb30806e5ba96f2f94" style="width: 100.0%; height: 100.0%;">CENTRO MOVER REVOLUCIÓN<br>CALLE PLAN DE GUADALUPE, SIN NÚMERO, COLONIA REVOLUCIÓN, SAN PEDRO GARZA GARCÍA, CÓDIGO POSTAL 66219, SAN PEDRO GARZA GARCÍA, NUEVO LEÓN.<br>ESQUINA CON AQUILES SERDÁN </div>`)[0];
+                popup_fbae9384768e9c2e74a7980bc741e617.setContent(html_0a38461cd0f2fdeb30806e5ba96f2f94);
+            
+        
+
+        marker_9e42358e436e8486dbaca7f99b85322e.bindPopup(popup_fbae9384768e9c2e74a7980bc741e617)
+        ;
+
+        
+    
+    
+            marker_9e42358e436e8486dbaca7f99b85322e.bindTooltip(
+                `<div>
+                     CENTRO MOVER REVOLUCIÓN
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_481cfd3f2a0700f146b015ff93585fbf = L.marker(
+                [25.6840829, -100.4129676],
+                {}
+            ).addTo(map_335992f1c0e62cfdc5ac535fef3d8060);
+        
+    
+        var popup_cf48690e47f33d997be5311da03419e8 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_7a4a641681d373f983519931b25f248f = $(`<div id="html_7a4a641681d373f983519931b25f248f" style="width: 100.0%; height: 100.0%;">CENTRO MOVER SAN PEDRO 400<br>CALLE URANIO, NÚMERO 606, COLONIA SAN PEDRO 400, SAN PEDRO GARZA GARCÍA, CÓDIGO POSTAL 66210, SAN PEDRO GARZA GARCÍA, NUEVO LEÓN. <br>ENTRE TUNGSTENO Y ESTAÑO</div>`)[0];
+                popup_cf48690e47f33d997be5311da03419e8.setContent(html_7a4a641681d373f983519931b25f248f);
+            
+        
+
+        marker_481cfd3f2a0700f146b015ff93585fbf.bindPopup(popup_cf48690e47f33d997be5311da03419e8)
+        ;
+
+        
+    
+    
+            marker_481cfd3f2a0700f146b015ff93585fbf.bindTooltip(
+                `<div>
+                     CENTRO MOVER SAN PEDRO 400
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1d5704592e56516ad593adc21925940f = L.marker(
+                [25.6870503, -100.4135458],
+                {}
+            ).addTo(map_335992f1c0e62cfdc5ac535fef3d8060);
+        
+    
+        var popup_7d0926144fe413d680441f7374f19087 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_f814be4da0864b42374f4f416de2b9ec = $(`<div id="html_f814be4da0864b42374f4f416de2b9ec" style="width: 100.0%; height: 100.0%;">CASA DE LA CULTURA LA CIMA<br>CALLE TUNGSTENO, SIN NÚMERO, COLONIA SAN PEDRO 400, SAN PEDRO GARZA GARCÍA, CÓDIGO POSTAL 66210, SAN PEDRO GARZA GARCÍA, NUEVO LEÓN.<br>ENTRE CROMO Y ALUMINIO</div>`)[0];
+                popup_7d0926144fe413d680441f7374f19087.setContent(html_f814be4da0864b42374f4f416de2b9ec);
+            
+        
+
+        marker_1d5704592e56516ad593adc21925940f.bindPopup(popup_7d0926144fe413d680441f7374f19087)
+        ;
+
+        
+    
+    
+            marker_1d5704592e56516ad593adc21925940f.bindTooltip(
+                `<div>
+                     CASA DE LA CULTURA LA CIMA
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b0d87849c8e3c5c425854556c096d8c1 = L.marker(
+                [25.6836858, -100.411273],
+                {}
+            ).addTo(map_335992f1c0e62cfdc5ac535fef3d8060);
+        
+    
+        var popup_9d3ebe12eda0915d358b9acb59aa69e8 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_25cb7afb6389128741248ba3a05bb1a7 = $(`<div id="html_25cb7afb6389128741248ba3a05bb1a7" style="width: 100.0%; height: 100.0%;">GIMNASIO LA RAZA<br>CALLE PLATINO, SIN NÚMERO, COLONIA SAN PEDRO 400, SAN PEDRO GARZA GARCÍA, CÓDIGO POSTAL 66210, SAN PEDRO GARZA GARCÍA, NUEVO LEÓN. <br>ENTRE PLOMO Y AVENIDA MANUEL J. CLOUTHIER</div>`)[0];
+                popup_9d3ebe12eda0915d358b9acb59aa69e8.setContent(html_25cb7afb6389128741248ba3a05bb1a7);
+            
+        
+
+        marker_b0d87849c8e3c5c425854556c096d8c1.bindPopup(popup_9d3ebe12eda0915d358b9acb59aa69e8)
+        ;
+
+        
+    
+    
+            marker_b0d87849c8e3c5c425854556c096d8c1.bindTooltip(
+                `<div>
+                     GIMNASIO LA RAZA
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6eee5b4dce713d99280a33ad100f6f77 = L.marker(
+                [25.6576203, -100.4222192],
+                {}
+            ).addTo(map_335992f1c0e62cfdc5ac535fef3d8060);
+        
+    
+        var popup_6e5e0303b6bae24e077959b19db7b243 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_f45c1a21078f8394408e4c403a197c9b = $(`<div id="html_f45c1a21078f8394408e4c403a197c9b" style="width: 100.0%; height: 100.0%;">CANCHA DE BÁSQUETBOL<br>CALLE ORO, SIN NÚMERO, COLONIA UNIDAD SAN PEDRO, SAN PEDRO GARZA GARCÍA, CÓDIGO POSTAL 66215, SAN PEDRO GARZA GARCÍA, NUEVO LEÓN.<br>ENTRE AVENIDA LAS TORRES Y AVENIDA MANUEL J. CLOUTHIER</div>`)[0];
+                popup_6e5e0303b6bae24e077959b19db7b243.setContent(html_f45c1a21078f8394408e4c403a197c9b);
+            
+        
+
+        marker_6eee5b4dce713d99280a33ad100f6f77.bindPopup(popup_6e5e0303b6bae24e077959b19db7b243)
+        ;
+
+        
+    
+    
+            marker_6eee5b4dce713d99280a33ad100f6f77.bindTooltip(
+                `<div>
+                     CANCHA DE BÁSQUETBOL
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_62682eafbfac9d7d5f89e9d2342079f0 = L.marker(
+                [25.6573447, -100.4017501],
+                {}
+            ).addTo(map_335992f1c0e62cfdc5ac535fef3d8060);
+        
+    
+        var popup_f545453294057ae91eab066007ae2ffb = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_33c2742798cbd0675054ed7c948b5ef4 = $(`<div id="html_33c2742798cbd0675054ed7c948b5ef4" style="width: 100.0%; height: 100.0%;">nan<br>nan<br>nan</div>`)[0];
+                popup_f545453294057ae91eab066007ae2ffb.setContent(html_33c2742798cbd0675054ed7c948b5ef4);
+            
+        
+
+        marker_62682eafbfac9d7d5f89e9d2342079f0.bindPopup(popup_f545453294057ae91eab066007ae2ffb)
+        ;
+
+        
+    
+    
+            marker_62682eafbfac9d7d5f89e9d2342079f0.bindTooltip(
+                `<div>
+                     nan
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0d7fcc4b6f1965eaa0fd871fb57072dc = L.marker(
+                [25.6573447, -100.4017501],
+                {}
+            ).addTo(map_335992f1c0e62cfdc5ac535fef3d8060);
+        
+    
+        var popup_6fc17257fd540a94907485a4746157cb = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_3c3aae9c61a07033ce2cd78d40f30438 = $(`<div id="html_3c3aae9c61a07033ce2cd78d40f30438" style="width: 100.0%; height: 100.0%;">nan<br>nan<br>nan</div>`)[0];
+                popup_6fc17257fd540a94907485a4746157cb.setContent(html_3c3aae9c61a07033ce2cd78d40f30438);
+            
+        
+
+        marker_0d7fcc4b6f1965eaa0fd871fb57072dc.bindPopup(popup_6fc17257fd540a94907485a4746157cb)
+        ;
+
+        
+    
+    
+            marker_0d7fcc4b6f1965eaa0fd871fb57072dc.bindTooltip(
+                `<div>
+                     nan
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_069405eac84445b7ae384a9ff39bad91 = L.marker(
+                [25.6573447, -100.4017501],
+                {}
+            ).addTo(map_335992f1c0e62cfdc5ac535fef3d8060);
+        
+    
+        var popup_06f74d1cceb264d64e2f453fe6ad28ae = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_58d044f7a30a1b78d5cb2c23f7d53576 = $(`<div id="html_58d044f7a30a1b78d5cb2c23f7d53576" style="width: 100.0%; height: 100.0%;">nan<br>nan<br>nan</div>`)[0];
+                popup_06f74d1cceb264d64e2f453fe6ad28ae.setContent(html_58d044f7a30a1b78d5cb2c23f7d53576);
+            
+        
+
+        marker_069405eac84445b7ae384a9ff39bad91.bindPopup(popup_06f74d1cceb264d64e2f453fe6ad28ae)
+        ;
+
+        
+    
+    
+            marker_069405eac84445b7ae384a9ff39bad91.bindTooltip(
+                `<div>
+                     nan
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_caff2f2d949b33ba2f77491f0c8be6b5 = L.marker(
+                [25.6573447, -100.4017501],
+                {}
+            ).addTo(map_335992f1c0e62cfdc5ac535fef3d8060);
+        
+    
+        var popup_9fc4d87378642c33c19239e202cce134 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_a6c11233cce12a9bb544b4cf8aa34546 = $(`<div id="html_a6c11233cce12a9bb544b4cf8aa34546" style="width: 100.0%; height: 100.0%;">nan<br>nan<br>nan</div>`)[0];
+                popup_9fc4d87378642c33c19239e202cce134.setContent(html_a6c11233cce12a9bb544b4cf8aa34546);
+            
+        
+
+        marker_caff2f2d949b33ba2f77491f0c8be6b5.bindPopup(popup_9fc4d87378642c33c19239e202cce134)
+        ;
+
+        
+    
+    
+            marker_caff2f2d949b33ba2f77491f0c8be6b5.bindTooltip(
+                `<div>
+                     nan
+                 </div>`,
+                {"sticky": true}
+            );
+        
+</script>
+</html>

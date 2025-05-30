@@ -150,6 +150,15 @@ def main():
         prefer_canvas=False
     )
     
+    # Crear datos para el buscador (JavaScript)
+    secciones_data = {}
+    for _, row in casillas_validas.iterrows():
+        secciones_data[row['seccion']] = {
+            'lat': row['lat'],
+            'lon': row['lon'],
+            'domicilio': row['domicilio']
+        }
+    
     # Agregar marcadores
     for _, row in casillas_validas.iterrows():
         folium.Marker(
@@ -159,8 +168,148 @@ def main():
             icon=folium.Icon(color='red', icon='info-sign')
         ).add_to(mapa)
     
-    # Guardar nuevo mapa
-    mapa.save("index2.html")
+    # Guardar mapa base
+    mapa.save("index2_base.html")
+    
+    # Leer el HTML generado y agregar el buscador
+    with open("index2_base.html", "r", encoding="utf-8") as f:
+        html_content = f.read()
+    
+    # CSS y JavaScript para el buscador
+    search_css = """
+    <style>
+        .search-container {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            font-family: Arial, sans-serif;
+        }
+        
+        .search-input {
+            padding: 8px 12px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            width: 120px;
+            margin-right: 5px;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: #4CAF50;
+        }
+        
+        .search-button {
+            padding: 8px 12px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .search-button:hover {
+            background: #45a049;
+        }
+        
+        .search-result {
+            margin-top: 8px;
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .search-error {
+            color: #f44336;
+        }
+        
+        .search-success {
+            color: #4CAF50;
+        }
+    </style>
+    """
+    
+    # JavaScript para funcionalidad del buscador
+    secciones_js = f"""
+    <script>
+        // Datos de las secciones
+        const seccionesData = {secciones_data};
+        
+        function buscarSeccion() {{
+            const input = document.getElementById('seccionInput');
+            const resultado = document.getElementById('resultado');
+            const seccion = input.value.trim();
+            
+            if (!seccion) {{
+                resultado.innerHTML = '<span class="search-error">⚠️ Ingresa un número de sección</span>';
+                return;
+            }}
+            
+            if (seccionesData[seccion]) {{
+                const data = seccionesData[seccion];
+                // Centrar mapa en la sección
+                map_{mapa._id}.setView([data.lat, data.lon], 16);
+                
+                // Mostrar resultado
+                resultado.innerHTML = `<span class="search-success">✅ Sección ${{seccion}} encontrada</span>`;
+                
+                // Limpiar input después de 2 segundos
+                setTimeout(() => {{
+                    input.value = '';
+                    resultado.innerHTML = '';
+                }}, 3000);
+            }} else {{
+                const secciones = Object.keys(seccionesData).sort((a,b) => parseInt(a) - parseInt(b));
+                resultado.innerHTML = `<span class="search-error">❌ Sección ${{seccion}} no encontrada</span><br>
+                                     <small>Disponibles: ${{secciones.slice(0,10).join(', ')}}...</small>`;
+            }}
+        }}
+        
+        // Buscar al presionar Enter
+        document.addEventListener('DOMContentLoaded', function() {{
+            const input = document.getElementById('seccionInput');
+            input.addEventListener('keypress', function(e) {{
+                if (e.key === 'Enter') {{
+                    buscarSeccion();
+                }}
+            }});
+        }});
+    </script>
+    """
+    
+    # HTML del buscador
+    search_html = """
+    <div class="search-container">
+        <div>
+            <input type="text" id="seccionInput" class="search-input" placeholder="Ej: 356" maxlength="3">
+            <button onclick="buscarSeccion()" class="search-button">🔍</button>
+        </div>
+        <div id="resultado" class="search-result"></div>
+    </div>
+    """
+    
+    # Insertar CSS en el head
+    html_content = html_content.replace('</head>', search_css + '</head>')
+    
+    # Insertar HTML del buscador después del div del mapa
+    map_div_end = f'<div class="folium-map" id="map_{mapa._id}" ></div>'
+    html_content = html_content.replace(map_div_end, map_div_end + search_html)
+    
+    # Insertar JavaScript antes del </body>
+    html_content = html_content.replace('</body>', secciones_js + '</body>')
+    
+    # Guardar mapa final con buscador
+    with open("index2.html", "w", encoding="utf-8") as f:
+        f.write(html_content)
+    
+    # Limpiar archivo temporal
+    import os
+    os.remove("index2_base.html")
     print("🗺️ Nuevo mapa guardado como index2.html")
     
     # Estadísticas finales

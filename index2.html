@@ -90,6 +90,34 @@
         .search-success {
             color: #4CAF50;
         }
+
+        .nav-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+    background: #667eea;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.nav-button:hover {
+    background: #5a67d8;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    color: white;
+    text-decoration: none;
+}
+
+
     </style>
     </head>
 <body>
@@ -97,6 +125,7 @@
     
             <div class="folium-map" id="map_be664c0dde597bbf5600dbfad6d2d102" ></div>
     <div class="search-container">
+
         <div>
             <input type="text" id="seccionInput" class="search-input" placeholder="Ej: 356" maxlength="3">
             <button onclick="buscarSeccion()" class="search-button">🔍</button>
@@ -104,6 +133,8 @@
         <div id="resultado" class="search-result"></div>
     </div>
     
+    <!-- Agregar este HTML después del div search-container existente -->
+<a href="/tabla" class="nav-button">📋 Ver Tabla</a>
         
 
     <script>

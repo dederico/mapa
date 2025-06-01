@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📋 Casillas San Pedro Garza García</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+        
+        .nav-links {
+            margin-top: 15px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 20px;
+            margin: 0 10px;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .stat-card {
+            background: rgba(255,255,255,0.2);
+            padding: 15px 25px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+        
+        .search-container {
+            padding: 30px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .search-row {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .search-input {
+            padding: 12px 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 25px;
+            font-size: 16px;
+            min-width: 250px;
+            transition: all 0.3s ease;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .search-btn {
+            padding: 12px 25px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .search-btn:hover {
+            background: #5a67d8;
+            transform: translateY(-2px);
+        }
+        
+        .filter-select {
+            padding: 12px 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 25px;
+            font-size: 14px;
+            background: white;
+            min-width: 150px;
+        }
+        
+        .table-container {
+            overflow-x: auto;
+            max-height: 70vh;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+        
+        thead {
+            background: #f8f9fa;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        
+        th {
+            padding: 15px 12px;
+            text-align: left;
+            font-weight: 600;
+            color: #495057;
+            border-bottom: 2px solid #e9ecef;
+        }
+        
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #e9ecef;
+            vertical-align: top;
+        }
+        
+        .casilla-row {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .casilla-row:hover {
+            background: #f8f9fa;
+            transform: scale(1.01);
+        }
+        
+        .seccion-badge {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+            min-width: 60px;
+            text-align: center;
+        }
+        
+        .colonia-tag {
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            display: inline-block;
+        }
+        
+        .domicilio {
+            max-width: 400px;
+            line-height: 1.4;
+            font-size: 0.95em;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #6c757d;
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: #6c757d;
+            display: none;
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            animation: modalSlideIn 0.3s ease;
+        }
+        
+        @keyframes modalSlideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .modal-header {
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .modal-title {
+            color: #667eea;
+            font-size: 1.5em;
+            margin: 0;
+        }
+        
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 1;
+        }
+        
+        .close:hover {
+            color: #000;
+        }
+        
+        .modal-info {
+            margin: 15px 0;
+        }
+        
+        .modal-label {
+            font-weight: bold;
+            color: #495057;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .modal-value {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .search-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .search-input {
+                min-width: auto;
+            }
+            
+            th, td {
+                padding: 8px 6px;
+                font-size: 0.85em;
+            }
+            
+            .domicilio {
+                max-width: 250px;
+            }
+            
+            .modal-content {
+                margin: 20% auto;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📋 Casillas Electorales</h1>
+            <p>San Pedro Garza García, Nuevo León</p>
+            
+            <div class="nav-links">
+                <a href="/">🗺️ Ver Mapa</a>
+                <a href="/datos">📊 Estadísticas</a>
+            </div>
+            
+            <div class="stats">
+                <div class="stat-card">
+                    <span class="stat-number" id="totalCasillas">-</span>
+                    <span class="stat-label">Total Casillas</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" id="totalColonias">-</span>
+                    <span class="stat-label">Colonias</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" id="totalCP">-</span>
+                    <span class="stat-label">Códigos Postales</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="search-container">
+            <div class="search-row">
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    class="search-input" 
+                    placeholder="Buscar por sección, domicilio o colonia..."
+                >
+                <button id="searchBtn" class="search-btn">🔍 Buscar</button>
+                
+                <select id="coloniaFilter" class="filter-select">
+                    <option value="">Todas las colonias</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="table-container">
+            <div id="loading" class="loading">
+                <h3>⏳ Cargando casillas...</h3>
+            </div>
+            
+            <table id="casillasTable" style="display: none;">
+                <thead>
+                    <tr>
+                        <th>Sección</th>
+                        <th>Colonia</th>
+                        <th>Código Postal</th>
+                        <th>Domicilio</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                </tbody>
+            </table>
+            
+            <div id="noResults" class="no-results">
+                <h3>🔍 No se encontraron resultados</h3>
+                <p>Intenta con otros términos de búsqueda</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para detalles de casilla -->
+    <div id="casillaModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2 class="modal-title">Detalles de Casilla</h2>
+            </div>
+            <div id="modalBody">
+                <!-- Contenido del modal se llenará dinámicamente -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Variables globales
+        let casillasData = [];
+        let filteredData = [];
+        
+        // Referencias DOM
+        const loading = document.getElementById('loading');
+        const table = document.getElementById('casillasTable');
+        const tableBody = document.getElementById('tableBody');
+        const noResults = document.getElementById('noResults');
+        const searchInput = document.getElementById('searchInput');
+        const searchBtn = document.getElementById('searchBtn');
+        const coloniaFilter = document.getElementById('coloniaFilter');
+        const modal = document.getElementById('casillaModal');
+        const modalBody = document.getElementById('modalBody');
+        const closeModal = document.querySelector('.close');
+        
+        // Cargar datos al iniciar
+        document.addEventListener('DOMContentLoaded', loadCasillas);
+        
+        async function loadCasillas() {
+            try {
+                const response = await fetch('/api/casillas-json');
+                const data = await response.json();
+                
+                if (data.success) {
+                    casillasData = data.casillas;
+                    filteredData = [...casillasData];
+                    
+                    updateStats();
+                    populateFilters();
+                    renderTable();
+                    
+                    loading.style.display = 'none';
+                    table.style.display = 'table';
+                } else {
+                    loading.innerHTML = `<h3>❌ Error</h3><p>${data.error}</p>`;
+                }
+            } catch (error) {
+                loading.innerHTML = `<h3>❌ Error de conexión</h3><p>No se pudieron cargar las casillas</p>`;
+                console.error('Error:', error);
+            }
+        }
+        
+        function updateStats() {
+            document.getElementById('totalCasillas').textContent = casillasData.length;
+            
+            const colonias = new Set(casillasData.map(c => c.colonia));
+            document.getElementById('totalColonias').textContent = colonias.size;
+            
+            const cps = new Set(casillasData.map(c => c.codigo_postal));
+            document.getElementById('totalCP').textContent = cps.size;
+        }
+        
+        function populateFilters() {
+            const colonias = [...new Set(casillasData.map(c => c.colonia))].sort();
+            coloniaFilter.innerHTML = '<option value="">Todas las colonias</option>';
+            
+            colonias.forEach(colonia => {
+                const option = document.createElement('option');
+                option.value = colonia;
+                option.textContent = colonia;
+                coloniaFilter.appendChild(option);
+            });
+        }
+        
+        function filterCasillas() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const selectedColonia = coloniaFilter.value;
+            
+            filteredData = casillasData.filter(casilla => {
+                const matchesSearch = !searchTerm || 
+                    casilla.seccion.toString().includes(searchTerm) ||
+                    casilla.domicilio.toLowerCase().includes(searchTerm) ||
+                    casilla.colonia.toLowerCase().includes(searchTerm);
+                
+                const matchesColonia = !selectedColonia || casilla.colonia === selectedColonia;
+                
+                return matchesSearch && matchesColonia;
+            });
+            
+            renderTable();
+        }
+        
+        function renderTable() {
+            if (filteredData.length === 0) {
+                tableBody.style.display = 'none';
+                noResults.style.display = 'block';
+                return;
+            }
+            
+            tableBody.style.display = '';
+            noResults.style.display = 'none';
+            
+            tableBody.innerHTML = filteredData.map(casilla => `
+                <tr class="casilla-row" onclick="showCasillaDetails('${casilla.seccion}')">
+                    <td>
+                        <span class="seccion-badge">${casilla.seccion}</span>
+                    </td>
+                    <td>
+                        <span class="colonia-tag">${casilla.colonia}</span>
+                    </td>
+                    <td>${casilla.codigo_postal}</td>
+                    <td class="domicilio">${casilla.domicilio}</td>
+                </tr>
+            `).join('');
+        }
+        
+        async function showCasillaDetails(seccion) {
+            try {
+                const response = await fetch(`/api/buscar/${seccion}`);
+                const data = await response.json();
+                
+                if (data.success) {
+                    const casilla = data.casilla;
+                    
+                    modalBody.innerHTML = `
+                        <div class="modal-info">
+                            <span class="modal-label">Sección:</span>
+                            <div class="modal-value">
+                                <span class="seccion-badge">${casilla.seccion}</span>
+                            </div>
+                        </div>
+                        
+                        <div class="modal-info">
+                            <span class="modal-label">Colonia:</span>
+                            <div class="modal-value">${casilla.colonia}</div>
+                        </div>
+                        
+                        <div class="modal-info">
+                            <span class="modal-label">Domicilio Completo:</span>
+                            <div class="modal-value">${casilla.domicilio}</div>
+                        </div>
+                        
+                        ${casilla.lat && casilla.lon ? `
+                        <div class="modal-info">
+                            <span class="modal-label">Coordenadas:</span>
+                            <div class="modal-value">
+                                📍 ${casilla.lat}, ${casilla.lon}
+                                <br>
+                                <a href="https://www.google.com/maps?q=${casilla.lat},${casilla.lon}" target="_blank" style="color: #667eea; text-decoration: none;">
+                                    🗺️ Ver en Google Maps
+                                </a>
+                            </div>
+                        </div>
+                        ` : ''}
+                    `;
+                    
+                    modal.style.display = 'block';
+                } else {
+                    alert(`Error: ${data.error}`);
+                }
+            } catch (error) {
+                alert('Error al cargar detalles de la casilla');
+                console.error('Error:', error);
+            }
+        }
+        
+        // Event listeners
+        searchInput.addEventListener('input', filterCasillas);
+        searchBtn.addEventListener('click', filterCasillas);
+        coloniaFilter.addEventListener('change', filterCasillas);
+        
+        // Modal events
+        closeModal.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+        
+        window.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+        
+        // Búsqueda con Enter
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                filterCasillas();
+            }
+        });
+    </script>
+</body>
+</html>

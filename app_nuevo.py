@@ -1,5 +1,7 @@
 import os
-from flask import Flask, send_file, render_template_string
+from flask import Flask, send_file, render_template_string, jsonify
+import pandas as pd
+import json
 
 app = Flask(__name__)
 
@@ -89,6 +91,123 @@ def health_check():
         "mapa_disponible": os.path.exists("index2.html"),
         "datos_disponibles": os.path.exists("casillas_nuevas_geolocalizadas.csv")
     }
+
+# Agregar estas rutas al final de tu app_nuevo.py existente, antes del if __name__ == "__main__":
+
+@app.route("/tabla")
+def tabla_casillas():
+    """Mostrar tabla de casillas"""
+    try:
+        return send_file("tabla.html")
+    except FileNotFoundError:
+        return """
+        <h1>❌ Tabla no encontrada</h1>
+        <p>El archivo <code>tabla.html</code> no existe.</p>
+        <p>Crea el archivo tabla.html en la misma carpeta.</p>
+        """, 404
+
+@app.route("/api/casillas-json")
+def casillas_json():
+    """API para obtener casillas como JSON para la tabla"""
+    try:
+        import pandas as pd
+        import json
+        
+        # Cargar desde el CSV que ya genera mapa_nuevo.py
+        df = pd.read_csv("casillas_nuevas_geolocalizadas.csv")
+        
+        # Procesar datos para la tabla
+        casillas = []
+        for _, row in df.iterrows():
+            # Extraer colonia del domicilio
+            domicilio = str(row['domicilio']).lower()
+            colonia = "Sin especificar"
+            if 'colonia ' in domicilio:
+                inicio = domicilio.find('colonia ') + 8
+                fin = domicilio.find(',', inicio)
+                if fin != -1:
+                    colonia = domicilio[inicio:fin].strip().title()
+            
+            # Extraer código postal
+            codigo_postal = "Sin especificar"
+            if 'código postal ' in domicilio:
+                inicio = domicilio.find('código postal ') + 14
+                fin = domicilio.find(',', inicio)
+                if fin != -1:
+                    codigo_postal = domicilio[inicio:fin].strip()
+            
+            casilla = {
+                "seccion": row['seccion'],
+                "domicilio": row['domicilio'],
+                "colonia": colonia,
+                "codigo_postal": codigo_postal,
+                "lat": row.get('lat'),
+                "lon": row.get('lon')
+            }
+            casillas.append(casilla)
+        
+        return jsonify({
+            "success": True,
+            "total": len(casillas),
+            "casillas": casillas
+        })
+        
+    except FileNotFoundError:
+        return jsonify({
+            "success": False,
+            "error": "Archivo de casillas no encontrado. Ejecuta primero python mapa_nuevo.py"
+        }), 404
+    except Exception as e:
+        return jsonify({
+            "success": False,
+            "error": f"Error: {str(e)}"
+        }), 500
+
+@app.route("/api/buscar/<seccion>")
+def buscar_seccion(seccion):
+    """API para buscar una sección específica"""
+    try:
+        import pandas as pd
+        df = pd.read_csv("casillas_nuevas_geolocalizadas.csv")
+        
+        # Buscar la sección
+        casilla = df[df['seccion'] == seccion]
+        
+        if not casilla.empty:
+            row = casilla.iloc[0]
+            
+            # Extraer colonia
+            domicilio = str(row['domicilio']).lower()
+            colonia = "Sin especificar"
+            if 'colonia ' in domicilio:
+                inicio = domicilio.find('colonia ') + 8
+                fin = domicilio.find(',', inicio)
+                if fin != -1:
+                    colonia = domicilio[inicio:fin].strip().title()
+            
+            return jsonify({
+                "success": True,
+                "casilla": {
+                    "seccion": row['seccion'],
+                    "domicilio": row['domicilio'],
+                    "colonia": colonia,
+                    "lat": row.get('lat'),
+                    "lon": row.get('lon')
+                }
+            })
+        else:
+            secciones_disponibles = sorted(df['seccion'].unique())
+            return jsonify({
+                "success": False,
+                "error": f"Sección {seccion} no encontrada",
+                "secciones_disponibles": secciones_disponibles.tolist()
+            }), 404
+            
+    except Exception as e:
+        return jsonify({
+            "success": False,
+            "error": str(e)
+        }), 500
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5050))

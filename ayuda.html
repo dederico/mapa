@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nueva Estructura Territorial PAN-SPGG</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .presentation-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .slide {
+            min-height: 90vh;
+            padding: 40px;
+            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .slide-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .slide-number {
+            background: #ff6b35;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .slide-title {
+            font-size: 3em;
+            font-weight: 300;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #ff6b35, #f7931e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .slide-subtitle {
+            font-size: 1.3em;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .content-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid #ff6b35;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .content-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: #ff6b35;
+        }
+
+        .card-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #ff6b35;
+        }
+
+        .card-content {
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        .structure-diagram {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border: 2px dashed rgba(255, 255, 255, 0.3);
+        }
+
+        .structure-level {
+            margin: 15px 0;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            border-left: 4px solid #ff6b35;
+        }
+
+        .level-title {
+            font-weight: bold;
+            color: #ff6b35;
+            margin-bottom: 8px;
+        }
+
+        .level-description {
+            opacity: 0.9;
+            font-size: 0.95em;
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+            margin: 20px;
+        }
+
+        .stat-number {
+            font-size: 3em;
+            font-weight: bold;
+            color: #ff6b35;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1.1em;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .comparison-table th {
+            background: rgba(255, 107, 53, 0.8);
+            padding: 20px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .comparison-table td {
+            padding: 15px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .highlight {
+            background: linear-gradient(45deg, #ff6b35, #f7931e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: bold;
+        }
+
+        .bullet-points {
+            list-style: none;
+            padding: 0;
+        }
+
+        .bullet-points li {
+            margin: 15px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .bullet-points li:before {
+            content: "▶";
+            color: #ff6b35;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .phase-timeline {
+            display: flex;
+            justify-content: space-between;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .phase-item {
+            flex: 1;
+            min-width: 250px;
+            margin: 10px;
+            text-align: center;
+            position: relative;
+        }
+
+        .phase-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff6b35, #f7931e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin: 0 auto 20px;
+        }
+
+        .phase-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #ff6b35;
+        }
+
+        .phase-description {
+            font-size: 0.95em;
+            opacity: 0.9;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin: 50px 0;
+            padding: 40px;
+            background: linear-gradient(45deg, #ff6b35, #f7931e);
+            border-radius: 20px;
+            color: white;
+        }
+
+        .cta-title {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .cta-subtitle {
+            font-size: 1.3em;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .slide-title {
+                font-size: 2em;
+            }
+            
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .phase-timeline {
+                flex-direction: column;
+            }
+            
+            .stats-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        .logo-container {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .logo {
+            font-size: 4em;
+            font-weight: bold;
+            color: #ff6b35;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container">
+        
+        <!-- SLIDE 1: PORTADA -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="logo-container">
+                    <div class="logo">🎯 PAN</div>
+                </div>
+                <div class="slide-title">NUEVA ESTRUCTURA TERRITORIAL</div>
+                <div class="slide-subtitle">Modelo Integral de Organización por Secciones</div>
+                <div class="slide-subtitle" style="margin-top: 20px; font-size: 1.1em;">San Pedro Garza García 2025-2027</div>
+            </div>
+        </div>
+
+        <!-- SLIDE 2: DIAGNÓSTICO -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="slide-number">01</div>
+                <div class="slide-title">DIAGNÓSTICO</div>
+                <div class="slide-subtitle">Lecciones de la Elección Judicial 2025</div>
+            </div>
+            
+            <div class="stats-container">
+                <div class="stat-item">
+                    <span class="stat-number">27.8%</span>
+                    <div class="stat-label">Votos PAN Logrados</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">2,297</span>
+                    <div class="stat-label">Votos Movilizados</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">703</span>
+                    <div class="stat-label">Votos Faltantes vs Meta</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">0/53</span>
+                    <div class="stat-label">Representantes de Casilla</div>
+                </div>
+            </div>
+
+            <div class="content-grid">
+                <div class="content-card">
+                    <div class="card-icon">⚠️</div>
+                    <div class="card-title">Problemas Identificados</div>
+                    <div class="card-content">
+                        <ul class="bullet-points">
+                            <li>Competencia desigual vs. aparato federal</li>
+                            <li>Guardia Civil protegiendo operadores 4T</li>
+                            <li>Falta de estructura territorial profunda</li>
+                            <li>Ausencia de inteligencia electoral</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="content-card">
+                    <div class="card-icon">🎯</div>
+                    <div class="card-title">Oportunidades</div>
+                    <div class="card-content">
+                        <ul class="bullet-points">
+                            <li>SPGG sigue siendo territorio panista</li>
+                            <li>Acceso a bases de datos municipales</li>
+                            <li>Legitimidad local establecida</li>
+                            <li>Recursos municipales disponibles</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 3: PROPUESTA CENTRAL -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="slide-number">02</div>
+                <div class="slide-title">PROPUESTA CENTRAL</div>
+                <div class="slide-subtitle">Estructura Territorial Integral</div>
+            </div>
+
+            <div class="content-grid">
+                <div class="content-card">
+                    <div class="card-icon">🏗️</div>
+                    <div class="card-title">Organización por Secciones</div>
+                    <div class="card-content">
+                        Estructura celular especializada en cada una de las <span class="highlight">53 secciones</span> electorales con roles específicos y permanentes.
+                    </div>
+                </div>
+                
+                <div class="content-card">
+                    <div class="card-icon">📊</div>
+                    <div class="card-title">Inteligencia Electoral</div>
+                    <div class="card-content">
+                        Base de datos integral cruzando información municipal para conocimiento profundo de cada vecino y sus preferencias.
+                    </div>
+                </div>
+                
+                <div class="content-card">
+                    <div class="card-icon">📹</div>
+                    <div class="card-title">Monitoreo Territorial</div>
+                    <div class="card-content">
+                        Red de <span class="highlight">530 cámaras IP</span> (10 por sección) para vigilancia estratégica y documentación de irregularidades.
+                    </div>
+                </div>
+                
+                <div class="content-card">
+                    <div class="card-icon">⚡</div>
+                    <div class="card-title">Respuesta en Tiempo Real</div>
+                    <div class="card-content">
+                        Capacidad de detección y respuesta inmediata ante operaciones de la 4T en territorio sampetrino.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 4: ESTRUCTURA ORGANIZACIONAL -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="slide-number">03</div>
+                <div class="slide-title">ESTRUCTURA ORGANIZACIONAL</div>
+                <div class="slide-subtitle">Modelo Sección 356 (Replicable a las 53)</div>
+            </div>
+
+            <div class="structure-diagram">
+                <div class="structure-level">
+                    <div class="level-title">🎯 ENLACE: Juan Pérez</div>
+                    <div class="level-description">Coordinador general de la sección</div>
+                </div>
+                
+                <div class="structure-level">
+                    <div class="level-title">🚀 MOVILIZADORES: José Pérez, Juan Hernández, Jaime Pérez</div>
+                    <div class="level-description">Operación territorial y movilización electoral</div>
+                </div>
+                
+                <div class="structure-level">
+                    <div class="level-title">🏠 CASAS AZULES: María Pérez, Ana Hernández, Pedro Pérez</div>
+                    <div class="level-description">Puntos de contacto y distribución en territorio</div>
+                </div>
+                
+                <div class="structure-level">
+                    <div class="level-title">📋 CASILLEROS: Jorge Juárez, Juan Rodríguez</div>
+                    <div class="level-description">Representantes especializados para día de elección</div>
+                </div>
+                
+                <div class="structure-level">
+                    <div class="level-title">📱 JÓVENES: July Hernández, Ramón Pérez</div>
+                    <div class="level-description">Redes sociales y movilización digital</div>
+                </div>
+                
+                <div class="structure-level">
+                    <div class="level-title">👥 1x10: Chonita Pérez</div>
+                    <div class="level-description">Red familiar extendida y contacto directo</div>
+                </div>
+                
+                <div class="structure-level">
+                    <div class="level-title">🎲 LOTERÍA: Cukita Pérez</div>
+                    <div class="level-description">Actividades sociales y cohesión comunitaria</div>
+                </div>
+                
+                <div class="structure-level">
+                    <div class="level-title">⚖️ JUEZ AUXILIAR: Don Mario Pérez</div>
+                    <div class="level-description">Legitimidad local y respaldo institucional</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 5: INTELIGENCIA ELECTORAL -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="slide-number">04</div>
+                <div class="slide-title">INTELIGENCIA ELECTORAL</div>
+                <div class="slide-subtitle">Conocimiento Profundo del Territorio</div>
+            </div>
+
+            <div class="content-grid">
+                <div class="content-card">
+                    <div class="card-icon">🏛️</div>
+                    <div class="card-title">Bases de Datos Municipales</div>
+                    <div class="card-content">
+                        <ul class="bullet-points">
+                            <li>Padrón Municipal completo</li>
+                            <li>Servicios (agua, predial, licencias)</li>
+                            <li>Programas sociales municipales</li>
+                            <li>Registro Civil actualizado</li>
+                            <li>Desarrollo económico local</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="content-card">
+                    <div class="card-icon">👤</div>
+                    <div class="card-title">Perfil por Vecino</div>
+                    <div class="card-content">
+                        <ul class="bullet-points">
+                            <li>Historial de adeudos municipales</li>
+                            <li>Participación en programas sociales</li>
+                            <li>Satisfacción con servicios públicos</li>
+                            <li>Actividad comercial/empresarial</li>
+                            <li>Composición y demografía familiar</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-container">
+                <div class="stat-item">
+                    <span class="stat-number">~80,000</span>
+                    <div class="stat-label">Registros Ciudadanos</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">53</span>
+                    <div class="stat-label">Secciones Mapeadas</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <div class="stat-label">Cobertura Territorial</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 6: MONITOREO TERRITORIAL -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="slide-number">05</div>
+                <div class="slide-title">MONITOREO TERRITORIAL</div>
+                <div class="slide-subtitle">Red de Vigilancia Estratégica</div>
+            </div>
+
+            <div class="content-grid">
+                <div class="content-card">
+                    <div class="card-icon">📹</div>
+                    <div class="card-title">530 Cámaras IP</div>
+                    <div class="card-content">
+                        <span class="highlight">10 ubicaciones</span> estratégicas por sección:
+                        <ul class="bullet-points">
+                            <li>3 Casas Azules principales</li>
+                            <li>2 Puntos de operación 4T</li>
+                            <li>2 Centros de programas sociales</li>
+                            <li>2 Accesos principales</li>
+                            <li>1 Casa del enlace territorial</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="content-card">
+                    <div class="card-icon">🎯</div>
+                    <div class="card-title">Objetivos del Sistema</div>
+                    <div class="card-content">
+                        <ul class="bullet-points">
+                            <li>Detectar operación 4T en tiempo real</li>
+                            <li>Monitorear flujo electoral</li>
+                            <li>Documentar irregularidades</li>
+                            <li>Coordinar respuesta operativa</li>
+                            <li>Garantizar seguridad del equipo</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 7: VENTAJAS COMPETITIVAS -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="slide-number">06</div>
+                <div class="slide-title">VENTAJAS COMPETITIVAS</div>
+                <div class="slide-subtitle">PAN vs. Estructura 4T</div>
+            </div>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Aspecto</th>
+                        <th>Estructura 4T</th>
+                        <th class="highlight">Propuesta PAN</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Organización</strong></td>
+                        <td>Vertical federal</td>
+                        <td class="highlight">Celular local</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Información</strong></td>
+                        <td>Programas sociales</td>
+                        <td class="highlight">Base integral municipal</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Legitimidad</strong></td>
+                        <td>Impuesta desde arriba</td>
+                        <td class="highlight">Construida localmente</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Permanencia</strong></td>
+                        <td>Dependiente de recursos federales</td>
+                        <td class="highlight">Autosostenible</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Conocimiento</strong></td>
+                        <td>Superficial/asistencialista</td>
+                        <td class="highlight">Profundo/integral</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Respuesta</strong></td>
+                        <td>Lenta, burocrática</td>
+                        <td class="highlight">Inmediata, territorial</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- SLIDE 8: IMPLEMENTACIÓN -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="slide-number">07</div>
+                <div class="slide-title">PLAN DE IMPLEMENTACIÓN</div>
+                <div class="slide-subtitle">Fases de Construcción Estratégica</div>
+            </div>
+
+            <div class="phase-timeline">
+                <div class="phase-item">
+                    <div class="phase-circle">1</div>
+                    <div class="phase-title">FASE 1 - Base</div>
+                    <div class="phase-description">
+                        <strong>3 meses</strong><br>
+                        • Selección de enlaces<br>
+                        • Base de datos inicial<br>
+                        • Monitoreo piloto (10 secciones)
+                    </div>
+                </div>
+                
+                <div class="phase-item">
+                    <div class="phase-circle">2</div>
+                    <div class="phase-title">FASE 2 - Expansión</div>
+                    <div class="phase-description">
+                        <strong>6 meses</strong><br>
+                        • 53 estructuras completas<br>
+                        • Base de datos integral<br>
+                        • Red total de monitoreo
+                    </div>
+                </div>
+                
+                <div class="phase-item">
+                    <div class="phase-circle">3</div>
+                    <div class="phase-title">FASE 3 - Optimización</div>
+                    <div class="phase-description">
+                        <strong>12 meses</strong><br>
+                        • Inteligencia predictiva<br>
+                        • Operación en tiempo real<br>
+                        • Modelo replicable
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 9: PRESUPUESTO -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="slide-number">08</div>
+                <div class="slide-title">INVERSIÓN REQUERIDA</div>
+                <div class="slide-subtitle">Presupuesto para Transformación Territorial</div>
+            </div>
+
+            <div class="content-grid">
+                <div class="content-card">
+                    <div class="card-icon">💰</div>
+                    <div class="card-title">Inversión Inicial</div>
+                    <div class="card-content">
+                        <ul class="bullet-points">
+                            <li><strong>$2,000,000</strong> - Estructura humana</li>
+                            <li><strong>$800,000</strong> - Sistema de monitoreo</li>
+                            <li><strong>$300,000</strong> - Base de datos/software</li>
+                            <li><strong>$200,000</strong> - Capacitación</li>
+                        </ul>
+                        <div style="margin-top: 20px; font-size: 1.2em; color: #ff6b35; font-weight: bold;">
+                            Total: $3,300,000 MXN
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="content-card">
+                    <div class="card-icon">📅</div>
+                    <div class="card-title">Operación Anual</div>
+                    <div class="card-content">
+                        <ul class="bullet-points">
+                            <li><strong>$1,500,000</strong> - Mantenimiento estructura</li>
+                            <li><strong>$200,000</strong> - Actualización tecnológica</li>
+                        </ul>
+                        <div style="margin-top: 40px; font-size: 1.2em; color: #ff6b35; font-weight: bold;">
+                            Total Anual: $1,700,000 MXN
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-container">
+                <div class="stat-item">
+                    <span class="stat-number">22x</span>
+                    <div class="stat-label">vs. Presupuesto Actual</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">$62</span>
+                    <div class="stat-label">Costo por Voto (proyectado)</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">53,000+</span>
+                    <div class="stat-label">Votos Objetivo 2027</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 10: CONCLUSIÓN -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="slide-number">09</div>
+                <div class="slide-title">CONCLUSIÓN</div>
+                <div class="slide-subtitle">El Futuro del PAN en SPGG</div>
+            </div>
+
+            <div class="cta-section">
+                <div class="cta-title">MODELO REVOLUCIONARIO</div>
+                <div class="cta-subtitle">
+                    Esta propuesta representa la <strong>evolución necesaria</strong> para competir efectivamente contra la 4T y consolidar SPGG como el <strong>bastión panista</strong> más sólido de México.
+                </div>
+            </div>
+
+            <div class="content-grid">
+                <div class="content-card">
+                    <div class="card-icon">🎯</div>
+                    <div class="card-title">Resultados Esperados</div>
+                    <div class="card-content">
+                        <ul class="bullet-points">
+                            <li>Conocimiento territorial superior</li>
+                            <li>Respuesta inmediata ante 4T</li>
+                            <li>Estructura permanente y autosostenible</li>
+                            <li>Modelo replicable a nivel nacional</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="content-card">
+                    <div class="card-icon">🚀</div>
+                    <div class="card-title">Impacto Estratégico</div>
+                    <div class="card-content">
+                        <ul class="bullet-points">
+                            <li>SPGG como laboratorio panista</li>
+                            <li>Resistencia efectiva al modelo 4T</li>
+                            <li>Liderazgo nacional en innovación política</li>
+                            <li>Preparación para elecciones 2027</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 11: CALL TO ACTION -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="slide-title" style="color: #ff6b35;">¿COMENZAMOS?</div>
+                <div class="slide-subtitle">La Transformación Territorial Empieza Ahora</div>
+            </div>
+
+            <div style="text-align: center; margin: 60px 0;">
+                <div style="font-size: 6em; margin-bottom: 30px;">🎯</div>
+                <div style="font-size: 2.5em; font-weight: bold; margin-bottom: 20px; color: #ff6b35;">
+                    SPGG 2027
+                </div>
+                <div style="font-size: 1.5em; opacity: 0.9;">
+                    Territorio Panista Blindado<br>
+                    Estructura Territorial Integral<br>
+                    Resistencia Efectiva Anti-4T
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 50px;">
+                <div style="background: rgba(255, 107, 53, 0.2); padding: 30px; border-radius: 15px; display: inline-block;">
+                    <div style="font-size: 1.3em; font-weight: bold; color: #ff6b35; margin-bottom: 10px;">
+                        PRÓXIMO PASO
+                    </div>
+                    <div style="font-size: 1.1em;">
+                        Aprobación para inicio de Fase 1<br>
+                        <strong>Implementación inmediata</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

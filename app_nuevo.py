@@ -208,6 +208,20 @@ def buscar_seccion(seccion):
             "success": False,
             "error": str(e)
         }), 500
+    
+
+@app.route("/ayuda")
+def presentacion_ayuda():
+    """Servir la presentación de la nueva estructura territorial"""
+    try:
+        return send_file("ayuda.html")
+    except FileNotFoundError:
+        return """
+        <h1>❌ Presentación no encontrada</h1>
+        <p>El archivo <code>ayuda.html</code> no existe en el directorio.</p>
+        <p><a href="/">← Volver al inicio</a></p>
+        """, 404 
+    
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5050))
